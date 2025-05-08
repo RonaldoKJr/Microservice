@@ -39,10 +39,12 @@ export class ClienteService {
 
   //método adicionar um cliente
   add(cliente:Cliente){
-    //O push adiciona um item (objeto) dentro
-    //de uma array (lista)
-    this.clientes.push(cliente)
-    console.log(this.clientes)
+    const httpHeaders = {
+      headers : {
+        'Content-type' : 'application/json',
+      }
+    }
+    return this.http.post(this.apiUrl, cliente, httpHeaders)
   }
 
   update(id:string, cliente:Cliente){
